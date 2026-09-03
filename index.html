@@ -610,7 +610,7 @@
   </header>
 
   <main class="container">
-<!-- Hero Section -->
+    <!-- Hero Section -->
     <section class="hero" id="about">
       <div class="hero-content">
         <div class="badge">
@@ -624,14 +624,14 @@
         </p>
         <div class="cta-group">
           <a href="mailto:doquandnvn@gmail.com" class="btn btn-primary">
-            <i class="fa-regular fa-envelope"></i> Liên hệ phỏng vấn
+            <i class="fa-regular fa-envelope"></i> Get in Touch
           </a>
           <a href="#projects" class="btn btn-outline">
-            <i class="fa-solid fa-code-fork"></i> Khám phá Projects
+            <i class="fa-solid fa-code-fork"></i> Explore Projects
           </a>
         </div>
       </div>
-      
+
       <div class="hero-visual">
         <div class="tech-card">
           <div class="card-meta-item">
@@ -670,26 +670,26 @@
     <section id="expertise" style="padding-top: 30px;">
       <div class="section-header">
         <div class="section-tag">// Core Competencies</div>
-        <h2>Lĩnh Vực Chuyên Môn</h2>
+        <h2>Area of Expertise</h2>
       </div>
 
       <div class="expertise-grid">
         <div class="exp-box">
           <div class="exp-icon"><i class="fa-solid fa-layer-group"></i></div>
           <h3>Physical Design & Implementation</h3>
-          <p>Academic RTL-to-GDSII implementation flow: Floorplanning, Power Planning, Power Network Synthesis (PNS), standard cell placement, Congestion Analysis, CTS Optimization, detailed routing và physical verification (DRC/LVS).</p>
+          <p>Academic RTL-to-GDSII implementation flow: Floorplanning, Power Planning, Power Network Synthesis (PNS), standard cell placement, Congestion Analysis, CTS Optimization, detailed routing, and physical verification (DRC/LVS).</p>
         </div>
 
         <div class="exp-box">
           <div class="exp-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
           <h3>Static Timing Analysis & Optimization</h3>
-          <p>Đóng Setup/Hold timing closure, đánh giá slack qua các góc PVT corners, kiểm soát clock skew & latency, tối ưu hóa timing sau routing bằng gate sizing, buffer insertion và VT swapping.</p>
+          <p>Setup and hold timing closure, slack evaluation across PVT corners, clock skew/latency control, post-route timing optimization via gate sizing, buffer insertion, and VT swapping.</p>
         </div>
 
         <div class="exp-box">
           <div class="exp-icon"><i class="fa-solid fa-terminal"></i></div>
           <h3>RTL Design & Automation</h3>
-          <p>Mô hình hóa mạch số trong Verilog HDL, tổng hợp datapath & control unit, mô phỏng chức năng testbench trên ModelSim, môi trường Linux và Tcl scripting cho tự động hóa luồng EDA.</p>
+          <p>Digital logic modeling in Verilog HDL, datapath and control unit synthesis, functional simulation via ModelSim, Linux operating environment, and Tcl scripting for EDA automation[cite: 18].</p>
         </div>
       </div>
     </section>
@@ -698,7 +698,7 @@
     <section id="projects">
       <div class="section-header">
         <div class="section-tag">// Technical Portfolio</div>
-        <h2>Dự Án Kỹ Thuật Tiêu Biểu</h2>
+        <h2>Featured Technical Projects</h2>
       </div>
 
       <div class="projects-container">
@@ -712,10 +712,10 @@
             <i class="fa-solid fa-wrench"></i> <strong>Platform & Tools:</strong> Synopsys IC Compiler II (ICC2), Synopsys PrimeTime (STA), Linux, Tcl Scripting
           </div>
           <ul class="project-bullets">
-            <li>Thực thi quy trình academic RTL-to-GDSII trên công cụ công nghiệp <strong>Synopsys ICC2</strong>, bao gồm floorplanning, power grid planning, standard cell placement, CTS optimization, detailed routing và post-route optimization.</li>
-            <li>Tiến hành phân tích Static Timing Analysis (STA) thông qua <strong>Synopsys PrimeTime</strong> trên các kịch bản multi-corner, định danh các đường critical path bị vi phạm setup/hold slack và electrical rule constraints (max transition, max capacitance).</li>
-            <li>Nghiên cứu tác động của ký sinh RC sau routing lên sự suy hao timing; cải thiện chỉ số <strong>Worst Negative Slack (WNS)</strong> và <strong>Total Negative Slack (TNS)</strong> thông qua kỹ thuật gate sizing, buffer insertion và Multi-Vt ECO.</li>
-            <li>Đạt được trạng thái triển khai vật lý hoàn chỉnh (clean post-route physical implementation) thông qua việc giải quyết triệt để tất cả lỗi DRC và phân tích điểm nóng nghẽn mạch (congestion hot spots).</li>
+            <li>Executed the academic RTL-to-GDSII flow in Synopsys ICC2, including floorplanning, power grid planning, standard cell placement, CTS optimization, detailed routing, and post-route optimization[cite: 18].</li>
+            <li>Conducted post-route Static Timing Analysis (STA) via Synopsys PrimeTime across multi-corner scenarios, identifying critical paths suffering from setup/hold slack violations and electrical design rule constraints (max transition, max capacitance)[cite: 18].</li>
+            <li>Investigated routing parasitic RC impacts on timing degradation and improved Worst Negative Slack (WNS) and Total Negative Slack (TNS) through gate sizing, buffer insertion, and Multi-Vt ECO techniques[cite: 18].</li>
+            <li>Achieved a clean post-route physical implementation by resolving all DRC violations and analyzing congestion hot spots[cite: 18].</li>
           </ul>
         </div>
 
@@ -729,9 +729,9 @@
             <i class="fa-solid fa-wrench"></i> <strong>Platform & Tools:</strong> Verilog HDL, ModelSim, OpenLane (SkyWater 130nm PDK), Magic, Netgen
           </div>
           <ul class="project-bullets">
-            <li>Thiết kế và tổng hợp kiến trúc vi xử lý 8-bit RISC CPU bằng Verilog HDL, tích hợp khối ALU, 16-register File, Control Unit và custom Datapath.</li>
-            <li>Xây dựng tập lệnh (Instruction Set Architecture - ISA) và kiểm chứng tính đúng đắn chức năng trên toàn bộ các lệnh được hiện thực (across all implemented instructions) bằng hệ thống testbench tự kiểm tra (self-checking).</li>
-            <li>Hiện thực hóa thiết kế từ RTL sang layout GDSII thông qua luồng tự động hóa nguồn mở <strong>OpenLane (SkyWater 130nm PDK)</strong>, đạt timing slack sạch và không có lỗi DRC/LVS.</li>
+            <li>Designed and synthesized an 8-bit RISC CPU architecture in Verilog HDL, integrating an ALU, 16-register File, Control Unit, and custom Datapath[cite: 18].</li>
+            <li>Developed custom Instruction Set Architecture (ISA) and validated functional execution across all implemented instructions using structured self-checking testbenches[cite: 18].</li>
+            <li>Successfully migrated the verified RTL design through the open-source automated RTL-to-GDSII flow using OpenLane (SkyWater 130nm PDK), achieving clean timing slack with zero DRC/LVS violations[cite: 18].</li>
           </ul>
         </div>
 
@@ -745,8 +745,8 @@
             <i class="fa-solid fa-wrench"></i> <strong>Platform & Tools:</strong> Verilog HDL, ModelSim, Synopsys Custom Compiler / ICC2
           </div>
           <ul class="project-bullets">
-            <li>Mô hình hóa và mô phỏng thanh ghi dịch 4-bit SISO trong Verilog HDL, kiểm chứng đồng bộ xung nhịp và sự lan truyền logic qua testbench ModelSim.</li>
-            <li>Thực hiện bố trí cell và routing trong công cụ Synopsys để đo đạc độ trễ clock-to-q và xác thực timing margins (setup/hold) dưới các mức tải điện dung khác nhau.</li>
+            <li>Modeled and simulated a 4-bit SISO shift register in Verilog HDL, validating clock synchronization and sequential logic propagation via ModelSim[cite: 18].</li>
+            <li>Implemented physical placement and routing in Synopsys tools to characterize clock-to-q delay and verify setup/hold timing margins under varying load conditions[cite: 18].</li>
           </ul>
         </div>
       </div>
@@ -756,7 +756,7 @@
     <section id="education">
       <div class="section-header">
         <div class="section-tag">// Background & Toolset</div>
-        <h2>Học Vấn & Kỹ Năng Kỹ Thuật</h2>
+        <h2>Education & Technical Skills</h2>
       </div>
 
       <div class="edu-skills-split">
@@ -764,23 +764,23 @@
         <div class="panel">
           <div class="panel-header">
             <i class="fa-solid fa-graduation-cap"></i>
-            <h3>Học Vấn (Education)</h3>
+            <h3>Education</h3>
           </div>
-          <div class="edu-school">Trường Đại học Khoa học Tự nhiên - ĐHQG-HCM</div>
-          <div class="edu-degree">Kỹ sư Điện tử & Viễn thông (Electronics and Telecommunications Engineering)</div>
+          <div class="edu-school">University of Science - VNUHCM</div>
+          <div class="edu-degree">Bachelor of Science in Electronics and Telecommunications Engineering</div>
           <div class="edu-meta">
-            <span><i class="fa-regular fa-calendar"></i> Tốt nghiệp dự kiến: 10/2026</span>
+            <span><i class="fa-regular fa-calendar"></i> Expected: Oct 2026</span>
             <span><strong>GPA: 3.14 / 4.0</strong></span>
           </div>
 
           <div class="coursework-box">
-            <strong>Môn học chuyên ngành ưu tiên:</strong><br/>
-            • Vi mạch số (Digital Integrated Circuits)<br/>
-            • Thiết kế & Kiểm tra SoC (SoC Design & Verification - 8.0/10)<br/>
-            • Cấu trúc & Kiến trúc máy tính (Computer Architecture)<br/>
-            • Quy trình thiết kế VLSI (VLSI Design Flow)<br/>
-            • Vi điều khiển (Microcontrollers Lab - 8.7/10)<br/>
-            • Cấu trúc dữ liệu & Giải thuật (DSA - 8.6/10)
+            <strong>Relevant Coursework:</strong><br/>
+            • Digital Integrated Circuits<br/>
+            • SoC Design & Verification (8.0/10)[cite: 18]<br/>
+            • Computer Architecture<br/>
+            • VLSI Design Flow<br/>
+            • Microcontrollers (Lab: 8.7/10)[cite: 18]<br/>
+            • Data Structures & Algorithms (8.6/10)[cite: 18]
           </div>
         </div>
 
@@ -788,7 +788,7 @@
         <div class="panel">
           <div class="panel-header">
             <i class="fa-solid fa-gears"></i>
-            <h3>Kỹ Năng Kỹ Thuật (Toolbox)</h3>
+            <h3>Technical Skills</h3>
           </div>
 
           <div class="skill-category">
