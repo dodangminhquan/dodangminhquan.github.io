@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do Dang Minh Quan | Physical Design Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-main: #0a0f1d;
+      --bg-card: rgba(16, 24, 48, 0.7);
+      --bg-card-hover: rgba(23, 34, 68, 0.85);
+      --border-color: rgba(56, 189, 248, 0.15);
+      --border-hover: rgba(56, 189, 248, 0.45);
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.35);
+      --accent: #818cf8;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --code-font: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(129, 140, 248, 0.08) 0%, transparent 40%);
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(10, 15, 29, 0.82);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-family: var(--code-font);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo span {
+      color: var(--text-main);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 105px 0 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--primary);
+      font-family: var(--code-font);
+      font-size: 0.82rem;
+      margin-bottom: 22px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.35rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-family: var(--code-font);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 26px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.05);
+      transform: translateY(-2px);
+    }
+
+    /* Profile Visual Card */
+    .hero-visual {
+      flex: 0.8;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tech-card {
+      width: 100%;
+      max-width: 360px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .tech-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 20%;
+      right: 20%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    .card-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .card-meta-item:last-child {
+      border-bottom: none;
+    }
+
+    .card-meta-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .card-meta-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-meta-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Section Header */
+    .section-header {
+      margin-bottom: 45px;
+      text-align: center;
+    }
+
+    .section-tag {
+      font-family: var(--code-font);
+      color: var(--primary);
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Area of Expertise */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 90px;
+    }
+
+    .exp-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .exp-box:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    .exp-icon {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .exp-box h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .exp-box p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Projects */
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 95px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .project-card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-type-tag {
+      font-family: var(--code-font);
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      background: rgba(129, 140, 248, 0.15);
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      color: var(--accent);
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .project-platform {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--code-font);
+      font-size: 0.88rem;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .project-bullets {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .project-bullets li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .project-bullets li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Education & Skills Split */
+    .edu-skills-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 90px;
+    }
+
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .panel-header i {
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    .panel-header h3 {
+      font-size: 1.25rem;
+      color: #fff;
+    }
+
+    .edu-school {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .edu-degree {
+      color: var(--primary);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .edu-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-family: var(--code-font);
+    }
+
+    .coursework-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .coursework-box strong {
+      color: #e2e8f0;
+    }
+
+    /* Skills Badges */
+    .skill-category {
+      margin-bottom: 18px;
+    }
+
+    .skill-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-cat-title {
+      font-size: 0.82rem;
+      font-family: var(--code-font);
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      font-family: var(--code-font);
+      transition: all 0.2s;
+    }
+
+    .skill-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 868px) {
+      .hero {
+        flex-direction: column;
+        padding-top: 60px;
+      }
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .edu-skills-split {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="nav-logo">
+          <i class="fa-solid fa-microchip"></i>
+          <span>DO DANG MINH QUAN</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#expertise">Expertise</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education & Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+      <div class="hero-content">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>AVAILABLE FOR PHYSICAL DESIGN / ASIC INTERNSHIP</span>
+        </div>
+        <h1>ĐỖ ĐẶNG MINH QUÂN</h1>
+        <div class="hero-subtitle">> Physical Design & VLSI Engineer_</div>
+        <p class="hero-desc">
+          Final-year Electronics and Telecommunications Engineering student specializing in VLSI Physical Design. Experienced with RTL-to-GDSII implementation using <strong>Synopsys ICC2</strong>, <strong>Static Timing Analysis (STA)</strong>, and post-route optimization through academic projects. Seeking a Physical Design Internship at <strong>Ideas2Silicon Vietnam</strong> to contribute strong analytical skills and hands-on PD flow experience.
+        </p>
+        <div class="cta-group">
+          <a href="mailto:doquandnvn@gmail.com" class="btn btn-primary">
+            <i class="fa-regular fa-envelope"></i> Liên hệ phỏng vấn
+          </a>
+          <a href="#projects" class="btn btn-outline">
+            <i class="fa-solid fa-code-fork"></i> Khám phá Projects
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="tech-card">
+          <div class="card-meta-item">
+            <div class="card-meta-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <div class="card-meta-label">Location</div>
+              <div class="card-meta-value">Dong Nai / Ho Chi Minh City</div>
+            </div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-meta-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <div class="card-meta-label">Phone</div>
+              <div class="card-meta-value">(+84) 857 100 178</div>
+            </div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-meta-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div>
+              <div class="card-meta-label">Degree & GPA</div>
+              <div class="card-meta-value">B.S. Electronics & Telecom (3.14 / 4.0)</div>
+            </div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-meta-icon"><i class="fa-solid fa-certificate"></i></div>
+            <div>
+              <div class="card-meta-label">Language & Cert</div>
+              <div class="card-meta-value">IELTS 5.5 • Basic Analog IC Design</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Area of Expertise -->
+    <section id="expertise" style="padding-top: 30px;">
+      <div class="section-header">
+        <div class="section-tag">// Core Competencies</div>
+        <h2>Lĩnh Vực Chuyên Môn</h2>
+      </div>
+
+      <div class="expertise-grid">
+        <div class="exp-box">
+          <div class="exp-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Physical Design & Implementation</h3>
+          <p>Academic RTL-to-GDSII implementation flow: Floorplanning, Power Planning, Power Network Synthesis (PNS), standard cell placement, Congestion Analysis, CTS Optimization, detailed routing và physical verification (DRC/LVS).</p>
+        </div>
+
+        <div class="exp-box">
+          <div class="exp-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+          <h3>Static Timing Analysis & Closure</h3>
+          <p>Đóng Setup/Hold timing closure, đánh giá slack qua các góc PVT corners, kiểm soát clock skew & latency, tối ưu hóa timing sau routing bằng gate sizing, buffer insertion và VT swapping.</p>
+        </div>
+
+        <div class="exp-box">
+          <div class="exp-icon"><i class="fa-solid fa-terminal"></i></div>
+          <h3>RTL Design & Automation</h3>
+          <p>Mô hình hóa mạch số trong Verilog HDL, tổng hợp datapath & control unit, mô phỏng chức năng testbench trên ModelSim, môi trường Linux và Tcl scripting cho tự động hóa luồng EDA.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="section-header">
+        <div class="section-tag">// Technical Portfolio</div>
+        <h2>Dự Án Kỹ Thuật Tiêu Biểu</h2>
+      </div>
+
+      <div class="projects-container">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-card-header">
+            <h3><i class="fa-solid fa-microchip" style="color: var(--primary);"></i> Evaluating & Optimizing Post-Route Timing Violations in Digital ASIC Design</h3>
+            <span class="project-type-tag">Graduation Thesis / Capstone</span>
+          </div>
+          <div class="project-platform">
+            <i class="fa-solid fa-wrench"></i> <strong>Tools & Platform:</strong> Synopsys IC Compiler II (ICC2), Synopsys PrimeTime (STA), Linux, Tcl Scripting
+          </div>
+          <ul class="project-bullets">
+            <li>Triển khai toàn diện quy trình academic RTL-to-GDSII trên công cụ công nghiệp <strong>Synopsys ICC2</strong>: Floorplanning, Power Grid Planning, Standard Cell Placement, CTS Optimization, Detailed Routing và Post-route Timing Closure.</li>
+            <li>Thực hiện phân tích Static Timing Analysis (STA) thông qua <strong>Synopsys PrimeTime</strong> đa góc (multi-corner), xác định các đường critical paths vi phạm setup/hold slack và electrical rule constraints (max transition, max capacitance).</li>
+            <li>Đánh giá ảnh hưởng ký sinh RC sau khi routing lên độ trễ và đóng timing thành công—cải thiện rõ rệt chỉ số <strong>Worst Negative Slack (WNS)</strong> và <strong>Total Negative Slack (TNS)</strong> qua kỹ thuật Gate Sizing, Buffer Insertion và Multi-Vt (VT swapping) ECO.</li>
+            <li>Đảm bảo tính sẵn sàng tape-out vật lý bằng việc phân tích các điểm nóng nghẽn mạch (congestion hot spots) và giải quyết 100% lỗi Design Rule Checking (DRC) sau routing.</li>
+          </ul>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-card-header">
+            <h3><i class="fa-solid fa-cpu" style="color: var(--primary);"></i> 8-Bit Microprocessor (CPU) Design & Implementation</h3>
+            <span class="project-type-tag">Academic / Group Project</span>
+          </div>
+          <div class="project-platform">
+            <i class="fa-solid fa-wrench"></i> <strong>Tools & Platform:</strong> Verilog HDL, ModelSim, OpenLane (SkyWater 130nm PDK), Magic, Netgen
+          </div>
+          <ul class="project-bullets">
+            <li>Thiết kế kiến trúc vi xử lý 8-bit RISC CPU bằng Verilog HDL: tích hợp khối ALU, 16-register File, Control Unit và Datapath tùy biến.</li>
+            <li>Xây dựng tập lệnh (Instruction Set Architecture - ISA) và kiểm chứng 100% chu trình thực thi qua hệ thống self-checking testbench và dạng sóng mô phỏng trên ModelSim.</li>
+            <li>Hiện thực hóa thiết kế từ RTL sang layout GDSII bằng luồng tự động hóa <strong>OpenLane (SkyWater 130nm PDK)</strong>, đạt trạng thái sạch lỗi DRC/LVS và đáp ứng chỉ tiêu slack xung nhịp.</li>
+          </ul>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-card-header">
+            <h3><i class="fa-solid fa-sliders" style="color: var(--primary);"></i> 4-Bit SISO Shift Register ASIC Flow & Timing Evaluation</h3>
+            <span class="project-type-tag">Academic Project</span>
+          </div>
+          <div class="project-platform">
+            <i class="fa-solid fa-wrench"></i> <strong>Tools & Platform:</strong> Verilog HDL, ModelSim, Synopsys Custom Compiler / ICC2
+          </div>
+          <ul class="project-bullets">
+            <li>Mô hình hóa và mô phỏng thanh ghi dịch 4-bit SISO trong Verilog HDL, kiểm chứng đồng bộ xung nhịp và sự lan truyền logic qua testbench ModelSim.</li>
+            <li>Thực hiện bố trí cell và routing trong công cụ Synopsys để đo đạc độ trễ clock-to-q và xác thực timing margins (setup/hold) dưới các mức tải điện dung.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Skills Panel -->
+    <section id="education">
+      <div class="section-header">
+        <div class="section-tag">// Background & Toolset</div>
+        <h2>Học Vấn & Kỹ Năng Kỹ Thuật</h2>
+      </div>
+
+      <div class="edu-skills-split">
+        <!-- Education Panel -->
+        <div class="panel">
+          <div class="panel-header">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h3>Học Vấn (Education)</h3>
+          </div>
+          <div class="edu-school">Trường Đại học Khoa học Tự nhiên - ĐHQG-HCM</div>
+          <div class="edu-degree">Kỹ sư Điện tử & Viễn thông (Electronics and Telecommunications Engineering)</div>
+          <div class="edu-meta">
+            <span><i class="fa-regular fa-calendar"></i> Tốt nghiệp dự kiến: 10/2026</span>
+            <span><strong>GPA: 3.14 / 4.0</strong></span>
+          </div>
+
+          <div class="coursework-box">
+            <strong>Môn học chuyên ngành ưu tiên:</strong><br/>
+            • Vi mạch số (Digital Integrated Circuits)<br/>
+            • Thiết kế & Kiểm tra SoC (SoC Design & Verification - 8.0/10)<br/>
+            • Cấu trúc & Kiến trúc máy tính (Computer Architecture)<br/>
+            • Quy trình thiết kế VLSI (VLSI Design Flow)<br/>
+            • Vi điều khiển (Microcontrollers Lab - 8.7/10)<br/>
+            • Cấu trúc dữ liệu & Giải thuật (DSA - 8.6/10)
+          </div>
+        </div>
+
+        <!-- Skills Panel -->
+        <div class="panel">
+          <div class="panel-header">
+            <i class="fa-solid fa-gears"></i>
+            <h3>Kỹ Năng Kỹ Thuật (Toolbox)</h3>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-title">EDA & Physical Design Tools</div>
+            <div class="skill-tags">
+              <span class="skill-pill">Synopsys ICC2</span>
+              <span class="skill-pill">Synopsys PrimeTime</span>
+              <span class="skill-pill">Synopsys Custom Compiler</span>
+              <span class="skill-pill">OpenLane Flow</span>
+              <span class="skill-pill">ModelSim</span>
+              <span class="skill-pill">Quartus Prime</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-title">Hardware Description Languages (HDL)</div>
+            <div class="skill-tags">
+              <span class="skill-pill">Verilog HDL</span>
+              <span class="skill-pill">SystemVerilog (Basic)</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-title">Scripting & Programming</div>
+            <div class="skill-tags">
+              <span class="skill-pill">Tcl Scripting</span>
+              <span class="skill-pill">Linux / Bash Shell</span>
+              <span class="skill-pill">C / C++</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-title">Certifications & Soft Skills</div>
+            <div class="skill-tags">
+              <span class="skill-pill">Basic Analog IC Design</span>
+              <span class="skill-pill">IELTS 5.5</span>
+              <span class="skill-pill">Root-cause Analysis</span>
+              <span class="skill-pill">Debugging Mindset</span>
+              <span class="skill-pill">Technical Documentation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:doquandnvn@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="tel:0857100178" title="Phone"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://github.com" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+      <p style="margin-bottom: 6px;">Designed for <strong>Do Dang Minh Quan</strong> — Physical Design Engineer Portfolio</p>
+      <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2026 HCMUS. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
